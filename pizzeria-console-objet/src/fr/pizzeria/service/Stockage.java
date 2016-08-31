@@ -2,18 +2,22 @@ package fr.pizzeria.service;
 
 import java.util.Collection;
 
-import fr.pizzeria.model.Pizza;
 
-public interface Stockage {
 
-	Collection<Pizza> trouverPizza();
+// T peux etre client ou Pizza ////et E c'est le type de l'identifiant qui peut etre Integer ou String
 
-	void savePizza(Pizza newPizza);
+public interface Stockage<T, E> {
 
-	void updatePizza(Pizza editPizza, String code);
+	Collection<T> findAll();
+	
+	T find (E code);
 
-	void suppPizza(String ancienCode);
+	void save(T newElement);
 
-	void savePizza(String code, String nom);
+	void update(T editElement, E code);
+
+	void delete(E ancienCode);
+
+	
 
 }
