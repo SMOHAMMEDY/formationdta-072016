@@ -45,7 +45,7 @@ public class Menu {
 
 	public void affichageM() {
 		
-		System.out.println("***** Pizzeria Administration *****");
+		System.out.println("***** Super Pizzeria Administration *****");
 
 		//// maven afficher la date du jour avec la librairie  du td 
 		Calendar now = Calendar.getInstance(); 
