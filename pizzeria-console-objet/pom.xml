@@ -1,31 +1,83 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>dta</groupId>
-	<artifactId>pizzeria-console-objet</artifactId>
-	<version>1.0.0</version>
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>dta</groupId>
+<artifactId>pizzeria-console-objet</artifactId>
+<version>1.0.0</version>
+
 	<dependencies>
-	<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-lang3</artifactId>
-    <version>3.4</version>
-</dependency>
-	
+		<dependency>
+   			<groupId>org.apache.commons</groupId>
+   			<artifactId>commons-lang3</artifactId>
+   			<version>3.4</version>
+		</dependency>
+		<dependency>
+ 			<groupId>org.apache.maven.plugins</groupId>
+ 			<artifactId>maven-shade-plugin</artifactId>
+ 			<version>2.4.3</version>
+ 			<type>maven-plugin</type>
+		</dependency>
 	</dependencies>
 	
-	<build>
-		<finalName>ProjetPizzeria</finalName>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!--- Configurer	le	plugin	«	maven-jar-plugin	»	pour	qu’il	mette	à	jour	l’attribut	«	Main-Class	»	du	fichier	META-INF/MANIFEST.MF	généré	pour	le	JAR.	 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                     <archive>
+                       <manifest>
+                            <mainClass>fr.pizzeria.console.PizzeriaAdminConsoleApp</mainClass>
+                           </manifest>
+                    </archive>
+                </configuration>
+           	</plugin>
+           	
+           	<!-- Utiliser	le	plugin	«	maven-shade-plugin	»	pour	créer	un	«	uber-jar	»	qui	contient	toutes	les	classes	compilées	du	projet	(y	compris	celles	des	dépendances).	 -->
+      	 	<plugin>
+         		<groupId>org.apache.maven.plugins</groupId>
+         		<artifactId>maven-shade-plugin</artifactId>
+         		<version>2.4.3</version>
+      	 	</plugin>
+    	 </plugins>
+    	 
+    	 
+    </pluginManagement>
+     <plugins>
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-shade-plugin</artifactId>
+       <version>2.4.3</version>
+       <executions>
+       <execution><goals><goal>shade</goal></goals></execution>
+       </executions>
+     </plugin>
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-source-plugin</artifactId>
+       <version>3.0.1</version>
+       <executions>
+         <execution>
+           <id>attach-sources</id>
+           <phase>package</phase>
+           <goals>
+             <goal>jar-no-fork</goal>
+           </goals>
+         </execution>
+       </executions>
+     </plugin>
+   </plugins>
+    
+    <finalName>pizzeria-console</finalName>
+</build>
 </project>
+
