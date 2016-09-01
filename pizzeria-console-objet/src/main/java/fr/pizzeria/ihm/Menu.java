@@ -1,11 +1,19 @@
 package fr.pizzeria.ihm;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+import 	org.apache.commons.lang3.time.DateFormatUtils;
 import fr.pizzeria.exception.SaisieEntierException;
 
 public class Menu {
+	
+	public static void Calendar(){
+		Date date = null;
+		Calendar.getInstance().setTime(date);
+		
+	}
 
 	private static final int CHOIX_SORTIR = 99;
 	private Map<Integer, Action> actions = new HashMap<>();
@@ -36,7 +44,14 @@ public class Menu {
 	}
 
 	public void affichageM() {
+		
 		System.out.println("***** Pizzeria Administration *****");
+
+		//// maven afficher la date du jour avec la librairie  du td 
+		Calendar now = Calendar.getInstance(); 
+		DateFormatUtils.format(now, "yyyy.MM.dd G 'at' HH:mm:ss z");
+		System.out.println(DateFormatUtils.format(now, "dd/MM-HH:mm"));
+		
 
 		for (Integer numero : actions.keySet()) {
 			Action ActionEnCours = actions.get(numero);
@@ -45,6 +60,11 @@ public class Menu {
 
 		}
 		System.out.println(CHOIX_SORTIR + ". Quitter" + "\n");
+	}
+
+	private void SimpleDateFormat(Calendar now) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public boolean choisir() {

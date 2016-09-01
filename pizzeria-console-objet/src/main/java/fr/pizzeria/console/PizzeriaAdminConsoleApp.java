@@ -47,10 +47,10 @@ public class PizzeriaAdminConsoleApp {
 /*
 
  
-//Création chemin d'un fichier data/pizza/test.txt
+//CrÃ©ation chemin d'un fichier data/pizza/test.txt
 Path cheminFichier = Paths.get("data","pizza","test.txt");
 
-// Création d'un nouveau fichier
+// CrÃ©ation d'un nouveau fichier
 Files.createFile(cheminFichier);
 
 // Ecriture dans le fichier data/pizza/test.txt de 2 lignes
@@ -59,7 +59,7 @@ Files.write(cheminFichier, Arrays.asList("ligne 1, Du texte...", "ligne 2 --- ")
 // Parcourir les lignes d'un fichier
 Files.lines(cheminFichier).forEach(System.out::println);
 
-// parcourir le répertoire data/pizza
+// parcourir le rï¿½pertoire data/pizza
 Files.list(Paths.get("data", "pizza")).forEach(p -> System.out.println(p.getFileName()));
 
 */
