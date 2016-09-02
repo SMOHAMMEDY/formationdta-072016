@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>dta</groupId>
+  <artifactId>pizzeria-console-maven</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  
+  <modules>
+  	<module>pizzeria-ihm</module> <!-- nom du répertoir pas l'artifact id -->
+  	<module>pizzeria-model</module>
+  	<module>pizzeria-service</module>
+  </modules>
+  
+  <!--  on peut declarer des variables personalisées  -->
+  <properties>
+   	<reflections.version>0.9.10</reflections.version>
+   	<commons.lang3.version>3.4</commons.lang3.version>
+   	<shade>2.4.3</shade>
+  </properties>
+  
+  <dependencyManagement>
+  
+	<dependencies>
+	
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>pizzeria-model</artifactId>
+			<version>${project.version}</version>
+	  <!--  <scope></scope> pas besoin c compile par default-->
+		</dependency>
+		
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>pizzeria-service</artifactId>
+			<version>${project.version}</version>
+	  <!--  <scope></scope> pas besoin c compile par default-->
+		</dependency>
+		
+		<!-- pas obliger de metre ihm en dependance parce que on l'appel null part alors que modèle est appler par service et service est appler par ihm -->
+		<!--  <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>pizzeria-ihm</artifactId>
+			<version>${projet.version}</version>
+			</dependency> -->
+	  <!--  <scope></scope> pas besoin c compile par default-->
+		
+		
+		<dependency>
+        	<groupId>org.apache.commons</groupId>
+        	<artifactId>commons-lang3</artifactId>
+        	<version>${commons.lang3.version}</version>
+        </dependency>
+            
+        <dependency>
+      		<groupId>org.reflections</groupId>
+        	<artifactId>reflections</artifactId>
+           	<version>${reflections.version}</version>
+     	</dependency>
+		
+	</dependencies>
+	
+  </dependencyManagement>
+  
+  <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${shade}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+  
+</project>
