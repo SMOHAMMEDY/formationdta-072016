@@ -1,5 +1,6 @@
 package fr.pizzeria.ihm;
 
+import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class AjouterPizzaAction extends Action {
@@ -19,8 +20,11 @@ public class AjouterPizzaAction extends Action {
 		String nom = helper.getScanner().next();
 		System.out.println("Veuillez saisir le prix de la pizza");
 		double prix = helper.getScanner().nextDouble();
+		System.out.println("Veuillez saisir la categorie de la pizza");
+		String cat = helper.getScanner().next();
+		
 		// creation de la nouvelle pizza
-		Pizza nouvellePizza = new Pizza(code, nom, prix);
+		Pizza nouvellePizza = new Pizza(code, nom, prix,CategoriePizza.valueOf(cat));
 		helper.getStockagePizza().save(nouvellePizza);
 
 		System.out.println("Pizza ajouter avec succes" + "\n");

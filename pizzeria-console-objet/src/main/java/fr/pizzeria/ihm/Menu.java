@@ -31,7 +31,25 @@ public class Menu {
 		this.actions.put(9, new ListerLivreurAction(helper));
 		this.actions.put(10, new AfficherCompteStatAction(helper));
 		this.actions.put(11, new VirementClientAction(helper));
+		
+		
+		//****** Reflection*******/////
+		Reflection reflection = new Reflection();
+		Set<Class<?>> anotated = reflection.getTypesAnnotatedWith(ActionAnnotation.class);
+		AtomicInteger yournotkillme = new AtomicInteger(0);
+		
+		int index = 0;
+		
+		Pizza pizza = new Pizza
+		annotated.forEach(uneClasse ->{
+			try{
+				//// index++
+				constructor<?> constructor = uneClasse.geConstructor(I.)
+			}
+		})
 
+		//// fin reflection
+		
 		this.ihmHelper = helper;
 	}
 

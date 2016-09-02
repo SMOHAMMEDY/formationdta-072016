@@ -27,7 +27,7 @@ public class ListerPizzaAction extends Action {
 		
 		pizzas.forEach(pizzaEnCours -> {
 			
-			System.out.println(pizzaEnCours.getCode() + " " + pizzaEnCours.getNom() + " " + pizzaEnCours.getPrix());
+			System.out.println(pizzaEnCours.toString());
 		}); 
 		System.out.println("\n");
 		

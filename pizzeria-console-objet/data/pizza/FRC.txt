@@ -1,1 +1,1 @@
-Française;15.0
+FRC;Francaise;15.0;SANS_VIANDE

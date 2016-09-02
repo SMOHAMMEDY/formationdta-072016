@@ -7,6 +7,33 @@ public class Pizza {
 	private String code;
 	private String nom;
 	private double prix;
+	private CategoriePizza cat;
+	
+
+	public Pizza(String code, String nom, double prix, CategoriePizza cat) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.prix = prix;
+		this.cat = cat;
+	}	
+
+
+	@Override
+	public String toString() {
+		
+		String str = (this.code + "\t" + this.nom + "\t"  + this.prix + "\t" + this.cat);
+		return str;
+	}
+
+
+	public CategoriePizza getCat() {
+		return cat;
+	}
+
+	public void setCat(CategoriePizza cat) {
+		this.cat = cat;
+	}
 
 	public String getCode() {
 		return code;
@@ -32,11 +59,11 @@ public class Pizza {
 		this.prix = prix;
 	}
 
-	public Pizza(String code, String nom, double prix) {
-		super();
-		this.code = code;
-		this.nom = nom;
-		this.prix = prix;
+	public String toFormat() {
+		String str = (this.code + ";" + this.nom + ";"  + this.prix + ";" + this.cat);
+		return str;
 	}
+
+	
 
 }

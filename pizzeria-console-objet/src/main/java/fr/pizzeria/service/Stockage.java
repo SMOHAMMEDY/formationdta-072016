@@ -17,7 +17,5 @@ public interface Stockage<T, E> {
 	void update(T editElement, E code);
 
 	void delete(E ancienCode);
-
 	
-
 }
