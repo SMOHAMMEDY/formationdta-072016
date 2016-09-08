@@ -56,7 +56,43 @@
         	<artifactId>reflections</artifactId>
            	<version>${reflections.version}</version>
      	</dependency>
+     	
+     	<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+			
+		</dependency>
 		
+		<dependency>
+   			<groupId>mysql</groupId>
+  			<artifactId>mysql-connector-java</artifactId>
+    		<version>5.1.39</version>
+    		<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.hibernate.javax.persistence</groupId>
+    		<artifactId>hibernate-jpa-2.1-api</artifactId>
+    		<version>1.0.0.Final</version>
+    		<scope>compile</scope> <!-- facultatif car compile par défault -->
+		</dependency>
+		
+		<dependency>
+   			<groupId>org.hibernate.javax.persistence</groupId>
+    		<artifactId>hibernate-jpa-2.1-api</artifactId>
+    		<version>1.0.0.Final</version>
+    		<scope>compile</scope> <!-- facultatif car compile par défault -->
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-entitymanager</artifactId>
+    		<version>5.1.0.Final</version>
+    		<scope>compile</scope> <!-- facultatif car compile par défault -->
+		</dependency>
+			
 	</dependencies>
 	
   </dependencyManagement>

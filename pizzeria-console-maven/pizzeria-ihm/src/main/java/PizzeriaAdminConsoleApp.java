@@ -2,6 +2,7 @@
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.logging.Level;
 
 import fr.pizzeria.ihm.IhmHelper;
 import fr.pizzeria.ihm.Menu;
@@ -17,6 +18,12 @@ import fr.pizzeria.service.StockagePizzaMap;
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+		
+		// suprimer le bloc rouge  d’information Hibernate
+		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+		
+		
+		
 		// **************Stockage en memoir pas de fichier
 		//Stockage<Pizza, String> stockagePizza = new StockagePizzaMap();
 		//*****************pour le stockage fichier
@@ -25,23 +32,21 @@ public class PizzeriaAdminConsoleApp {
 		
 		// lire le fichier properties srs/main/ressource de ihm
 		
-			ResourceBundle bundle = ResourceBundle.getBundle("application");
-        
-			String classeStockagePizza = bundle.getString("stockage.pizza");
-        
-			System.out.println(classeStockagePizza);
-        // fin de la prtie tp 4 maven
-        
-        Class<? > classePizza = Class.forName(classeStockagePizza);
+		//Stockage<Pizza, String> stockagePizzaFichier = new StockagePizzaFichier();
+				//Stockage<Pizza, String> stockagePizzaMap = new StockagePizzaMap();
+				
+				// lecture des properties remplce les 2 lines juste en haut
+		        ResourceBundle bundle = ResourceBundle.getBundle("application");
+		        String classeStockagePizza = bundle.getString("pizza.service.Impl");
+		        System.out.println(classeStockagePizza);
+		        // crer une classe indiquer dans le fichier application.properties dans srs main ressources
+		        Class<?> classePizza = Class.forName(classeStockagePizza);
+		        Stockage<Pizza, String> stockagePizza = (Stockage<Pizza, String>) classePizza.newInstance();
 
-        Stockage<Pizza, String> stockage = (Stockage<Pizza, String>) classePizza.newInstance();
-		
-		Stockage<Pizza, String> stockagePizzaFichier = new StockagePizzaFichier();
-		Stockage<Pizza, String> stockagePizzaMap = new StockagePizzaMap();
 		Stockage<Client, Integer> stockageClient = new StockageClientMap();
 		Stockage<Livreur, Integer> stockageLivreur = new StockageLivreurMap();
 		
-		IhmHelper helper = new IhmHelper(stockagePizzaFichier, stockageClient,stockageLivreur, scanner);
+		IhmHelper helper = new IhmHelper(stockagePizza, stockageClient,stockageLivreur, scanner);
 
 		// Afficher le Menu
 		Menu listMenu = new Menu(helper);

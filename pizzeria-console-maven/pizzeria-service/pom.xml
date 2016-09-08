@@ -12,11 +12,18 @@
  	</parent>
  	
  	<dependencies>
+ 	
  	 	<dependency>
  	 		<groupId>${project.groupId}</groupId>
   			<artifactId>pizzeria-model</artifactId>
   			<version>${project.version}</version>
  	 	</dependency>
+ 	 	
+ 	 	<dependency>
+   			<groupId>mysql</groupId>
+  			<artifactId>mysql-connector-java</artifactId>
+   		</dependency>
+		
  	 </dependencies>
  	 
 </project>

@@ -11,7 +11,20 @@
   		<version>1.0</version>
   		<relativePath>../pom.xml</relativePath> <!-- chemain vers le pom parent -->
  	</parent>
+ 	<dependencies>
+ 		<dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+		</dependency>
+		<!-- on ajoute cette dependance pour utiliser une méthode dans le to string -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.hibernate.javax.persistence</groupId>
+    		<artifactId>hibernate-jpa-2.1-api</artifactId>
+		</dependency>
+ 	</dependencies>
  	
-
- 	 
 </project>
