@@ -1,7 +1,6 @@
 package fr.pizzeria.ihm;
 
 import java.util.Collection;
-import java.util.function.Consumer;
 
 import fr.pizzeria.model.Pizza;
 

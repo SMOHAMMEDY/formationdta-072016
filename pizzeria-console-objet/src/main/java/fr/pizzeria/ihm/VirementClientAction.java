@@ -2,7 +2,6 @@ package fr.pizzeria.ihm;
 
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
-import fr.pizzeria.model.Client;
 
 public class VirementClientAction extends Action {
 

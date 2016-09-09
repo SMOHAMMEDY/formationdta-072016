@@ -16,54 +16,46 @@ import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
 public class StockagePizzaJDBC implements Stockage<Pizza, String>{
-	
+
 	//public Map<String, Pizza> pizzas = new TreeMap<>();
 
-public Connection creerConnection() throws SQLException{
-		
-		 
+	public Connection creerConnection() throws SQLException{
+
+
 		// lecture des properties remplce les 2 lines juste en haut
-	        ResourceBundle bundle = ResourceBundle.getBundle("JDBC");
-	        String url = bundle.getString("url");
-	        String user = bundle.getString("user");
-	        String mdp = bundle.getString("MDP");
-	        
+		ResourceBundle bundle = ResourceBundle.getBundle("JDBC");
+		String url = bundle.getString("url");
+		String user = bundle.getString("user");
+		String mdp = bundle.getString("MDP");
+
 		// création connection
-	        Connection connection = DriverManager.getConnection(url,user,mdp);
-	        return connection;
+		Connection connection = DriverManager.getConnection(url,user,mdp);
+		return connection;
 	}
-	
+
 	@Override
 	public Collection<Pizza> findAll() {
-		
-		
-		 Collection<Pizza> pizzas = new ArrayList<>();
+
+		Collection<Pizza> pizzas = new ArrayList<>();
 		/* 
 		// lecture des properties remplce les 2 lines juste en haut
 	        ResourceBundle bundle = ResourceBundle.getBundle("JDBC");
 	        String url = bundle.getString("url");
 	        String user = bundle.getString("user");
 	        String mdp = bundle.getString("MDP");
-	    
 	    // Créer une connection  structure : Connection connection = DriverManager.getConnection(url,user,password);
-		
-				//  ouverture des ressources connection statement  et resutat 
-					Connection connection = DriverManager.getConnection(url,user,mdp);
-									
-			*/		
-	        
-		
+		//  ouverture des ressources connection statement  et resutat 
+			Connection connection = DriverManager.getConnection(url,user,mdp);
+		 */		
 		// Créer une connection  structure : Connection connection = DriverManager.getConnection(url,user,password);
 		try{
 			//  ouverture des ressources connection statement  et resutat 
-				Connection connection = creerConnection();
-	
-		        Statement st = connection.createStatement();
-		        
-		        ResultSet resultat = st.executeQuery("select * from pizza");
-		   
-			
-			
+			Connection connection = creerConnection();
+
+			Statement st = connection.createStatement();
+
+			ResultSet resultat = st.executeQuery("select * from pizza");
+
 			while(resultat.next()){
 				String code = resultat.getString("reference");
 				String nom = resultat.getString("libelle");
@@ -71,15 +63,15 @@ public Connection creerConnection() throws SQLException{
 				// récupéré le string de categories puis le convertir en type categorie pizza
 				String cat = resultat.getString("categories");
 				CategoriePizza catPizza = CategoriePizza.valueOf(cat);
-				
+
 				Pizza nPizza = new Pizza (code, nom, prix, catPizza);
-		
+
 				//pizzas.put(code, NPizza);
 				pizzas.add(nPizza);
 			}
-			
+
 		} catch (SQLException e) {
-			
+
 			throw new RuntimeException(e);
 		}
 		return pizzas;
@@ -94,11 +86,11 @@ public Connection creerConnection() throws SQLException{
 	@Override
 	public void save(Pizza newElement) {
 
-		
+
 		Connection connection;
 		try {
 			String sqlInsert = "INSERT INTO pizza (reference,libelle,prix, categories) VALUES ( ?,?,?,?);"; // pour ajouter une pizza
-			String sqlUpdate = "UPDATE pizza SET reference = ?, libelle = ? , prix = ? ,categories = ? WHERE id = ?;"; // pour modifier une pizza 
+			
 			connection = creerConnection();
 			// Method 1 dialoger avec BDD INSERT, UPDATE, DELETE
 
@@ -106,8 +98,8 @@ public Connection creerConnection() throws SQLException{
 			Statement st = connection.createStatement();
 			String requete = "INSERT INTO PIZZA(reference,libelle,prix,categories) VALUES('" + newElement.getCode() +"','"+ newElement.getNom()+"',"+ newElement.getPrix()+",'"+newElement.getCat()+"')";
 			int nbPizzaInsere =  st.executeUpdate(requete); 
-			*/
-			
+			 */
+
 			// Method 2 PreparedStatement
 			PreparedStatement updatePizzaSt= connection.prepareStatement(sqlInsert); 
 			updatePizzaSt.setString(1,newElement.getCode()); 
@@ -115,27 +107,44 @@ public Connection creerConnection() throws SQLException{
 			updatePizzaSt.setDouble(3,newElement.getPrix());
 			updatePizzaSt.setString(4,newElement.getCat().name());// .name pour transformer un objet de type ennumération en chain de caractère portant le nom 
 			updatePizzaSt.executeUpdate(); 
+
+			connection.close();
 			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+			
+	}
+
+	@Override
+	public void update(Pizza editElement, String code) {
+		Connection connection;
+		String sqlUpdate = "UPDATE pizza SET reference = ?, libelle = ? , prix = ? ,categories = ? WHERE id = ?;"; // pour modifier une pizza 
+		
+		try {
+			connection = creerConnection();
+			PreparedStatement updatePizzaSt= connection.prepareStatement(sqlUpdate); 
+			updatePizzaSt.setString(1,editElement.getCode()); 
+			updatePizzaSt.setString(2,editElement.getNom());
+			updatePizzaSt.setDouble(3,editElement.getPrix());
+			updatePizzaSt.setString(4,editElement.getCat().name());// .name pour transformer un objet de type ennumération en chain de caractère portant le nom 
+			updatePizzaSt.executeUpdate(); 
+			
+			connection.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
-	return;
-	}
-
-	@Override
-	public void update(Pizza editElement, String code) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void delete(String ancienCode) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 
 }

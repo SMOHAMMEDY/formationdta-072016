@@ -1,17 +1,14 @@
 package fr.pizzeria.ihm;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import fr.pizzeria.model.AbstractPersonne;
 import fr.pizzeria.model.Client;
 import fr.pizzeria.model.CompteStat;
 import fr.pizzeria.model.Livreur;
-import fr.pizzeria.model.Pizza;
 
 public class AfficherCompteStatAction extends Action {
 

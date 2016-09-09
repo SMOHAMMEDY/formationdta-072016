@@ -4,7 +4,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 import 	org.apache.commons.lang3.time.DateFormatUtils;
+
 import fr.pizzeria.exception.SaisieEntierException;
 
 public class Menu {
@@ -31,6 +33,7 @@ public class Menu {
 		this.actions.put(9, new ListerLivreurAction(helper));
 		this.actions.put(10, new AfficherCompteStatAction(helper));
 		this.actions.put(11, new VirementClientAction(helper));
+		this.actions.put(12, new ImporterDonneesAction(helper));
 		
 		//
 		////****** Reflection*******/////
