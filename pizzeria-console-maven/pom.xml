@@ -16,6 +16,7 @@
    	<reflections.version>0.9.10</reflections.version>
    	<commons.lang3.version>3.4</commons.lang3.version>
    	<shade>2.4.3</shade>
+   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
   <dependencyManagement>
