@@ -1,15 +1,25 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
 
+@Entity
 public class Client extends AbstractPersonne implements CompteStat{
+
+	@Column(name= "mot_de_passe")
+	private String mdp;
+	@Column(name= "e_Mail")
+	private String mail;
 	
 	
-	
-public Client(Integer nouveauCode, String nouveauNom, String nouveauPrenom, double nouveauSolde){
+public Client(Integer nouveauCode, String nouveauNom, String nouveauPrenom, double nouveauSolde, String nouveauEmail, String nouveauMdp){
 	super(nouveauCode, nouveauNom, nouveauPrenom, nouveauSolde);
-		
+	this.mail = nouveauEmail;
+	this.mdp = nouveauMdp;
+	
 	}
 	
 	

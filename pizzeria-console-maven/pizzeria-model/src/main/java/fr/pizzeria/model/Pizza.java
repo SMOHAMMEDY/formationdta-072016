@@ -25,15 +25,28 @@ public class Pizza {
 	private double prix;
 	@ Enumerated(EnumType.STRING) @Column(name ="categories")
 	private CategoriePizza cat;
+	@Column(name= "Url_Image")
+	private String url;
 	
 
-	public Pizza(String code, String nom, double prix, CategoriePizza cat) {
+	public Pizza(String code, String nom, double prix, CategoriePizza cat, String url) {
 		super();
 		this.code = code;
 		this.nom = nom;
 		this.prix = prix;
 		this.cat = cat;
+		this.url = url;
 	}	
+
+
+	public String getUrl() {
+		return url;
+	}
+
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 
 	public Pizza() {

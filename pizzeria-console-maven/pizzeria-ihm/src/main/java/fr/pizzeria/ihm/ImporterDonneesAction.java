@@ -3,7 +3,7 @@ package fr.pizzeria.ihm;
 public class ImporterDonneesAction extends Action {
 
 	public ImporterDonneesAction(IhmHelper helper) {
-		super("Importation des donn�es", helper);
+		super("Importation des donnees", helper);
 		
 	}
 

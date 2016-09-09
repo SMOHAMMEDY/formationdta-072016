@@ -1,7 +1,5 @@
 package fr.pizzeria.model;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,8 +11,8 @@ public class ClientTest {
 	@Test
 	public void testCrediterCompte() throws CreditException {
 		
-		// créer une instance de client pour faire le test 
-		Client client = new Client(99999, "nomTest", "prénomTest", 0);
+		// crï¿½er une instance de client pour faire le test 
+		Client client = new Client(99999, "nomTest", "prï¿½nomTest", 0, "blabla@gmail.com", "12345");
 		
 		client.crediterCompte(10);
 		
@@ -25,7 +23,7 @@ public class ClientTest {
 	
 	@Test(expected = CreditException.class)
 	
-	public void testcréditCompte() {
+	public void testcreditCompte() {
 	
 	}
 

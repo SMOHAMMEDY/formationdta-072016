@@ -1,9 +1,14 @@
 package fr.pizzeria.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 import fr.pizzeria.exception.DebitException;
 
+@Entity
 public class Livreur extends AbstractPersonne implements CompteStat{
 
+	@Column(name= "DecouverAutorise", length = 5)
 	private double montantDecouvertAutorise;
 	
 	public double getMontantDecouvertAutorise() {
@@ -11,11 +16,9 @@ public class Livreur extends AbstractPersonne implements CompteStat{
 	}
 
 
-
 	public void setMontantDecouvertAutorise(double montantDecouvertAutorise) {
 		this.montantDecouvertAutorise = montantDecouvertAutorise;
 	}
-
 
 
 	public Livreur(Integer code, String nom, String prenom, double solde, double montantDecouvertAutorise) {

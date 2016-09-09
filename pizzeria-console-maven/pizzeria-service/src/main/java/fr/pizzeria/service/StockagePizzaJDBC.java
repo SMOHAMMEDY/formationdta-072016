@@ -60,11 +60,12 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 				String code = resultat.getString("reference");
 				String nom = resultat.getString("libelle");
 				double prix = resultat.getDouble("prix");
+				String url = resultat.getString("Url_Image");
 				// récupéré le string de categories puis le convertir en type categorie pizza
 				String cat = resultat.getString("categories");
 				CategoriePizza catPizza = CategoriePizza.valueOf(cat);
 
-				Pizza nPizza = new Pizza (code, nom, prix, catPizza);
+				Pizza nPizza = new Pizza (code, nom, prix, catPizza, url);
 
 				//pizzas.put(code, NPizza);
 				pizzas.add(nPizza);

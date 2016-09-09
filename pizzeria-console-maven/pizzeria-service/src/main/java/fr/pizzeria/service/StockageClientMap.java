@@ -12,7 +12,7 @@ public class StockageClientMap implements Stockage <Client, Integer> {
 	public Map<Integer, Client> client = new TreeMap<>();
 
 	public StockageClientMap() {
-		this.client.put(1, new Client(1,"thomas","Dupond", 120));
+		this.client.put(1, new Client(1,"thomas","Dupond", 120, "email@gmail.com", "00000"));
 	
 
 	}

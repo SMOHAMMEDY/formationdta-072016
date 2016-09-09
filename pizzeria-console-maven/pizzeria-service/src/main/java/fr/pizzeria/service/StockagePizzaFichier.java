@@ -42,7 +42,7 @@ public class StockagePizzaFichier implements Stockage<Pizza, String>{
 	
 	private Pizza stockerPizza(String line) {
 		String [] laBonLine = line.toString().split(";");
-		Pizza pizzaCree = new Pizza(laBonLine[0],laBonLine[1], Double.valueOf(laBonLine[2]),CategoriePizza.valueOf(laBonLine[3]));
+		Pizza pizzaCree = new Pizza(laBonLine[0],laBonLine[1], Double.valueOf(laBonLine[2]),CategoriePizza.valueOf(laBonLine[3]), laBonLine[4]);
 		return pizzaCree;
 	} 
 

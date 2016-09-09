@@ -5,21 +5,21 @@ import fr.pizzeria.exception.DebitException;
 public class DebiterClientAction extends Action{
 
 	public DebiterClientAction(IhmHelper helper) {
-		super("Débiter un compte client", helper);
+		super("Debiter un compte client", helper);
 	}
 
 	@Override
 	public void execute() {
 
-		// introduire le code du client à créditer
+		// introduire le code du client ï¿½ crï¿½diter
 		System.out.println("Vous voulez modifier un solde de client veuillez choisir lequel (Code)");
 		Integer code = helper.getScanner().nextInt();
 		
-		// saisi du montant à créditer
-		System.out.println("Veuillez saisir le montant à débiter.");
+		// saisi du montant ï¿½ crï¿½diter
+		System.out.println("Veuillez saisir le montant ï¿½ dï¿½biter.");
 		double montant = helper.getScanner().nextDouble();
 		
-		// créditer le compte du client choisi par le montant saisi
+		// crï¿½diter le compte du client choisi par le montant saisi
 		
 		try {
 			helper.getStockageClient().find(code).debiterCompte(montant);

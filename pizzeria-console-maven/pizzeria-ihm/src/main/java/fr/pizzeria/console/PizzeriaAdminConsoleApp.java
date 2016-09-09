@@ -43,11 +43,10 @@ public class PizzeriaAdminConsoleApp {
 		// crer une classe indiquer dans le fichier application.properties dans srs main ressources
 		Class<?> classePizza = Class.forName(classeStockagePizza);
 		Stockage<Pizza, String> stockagePizza = (Stockage<Pizza, String>) classePizza.newInstance();
-
-		Stockage<Client, Integer> stockageClient = new StockageClientMap();
 		Stockage<Livreur, Integer> stockageLivreur = new StockageLivreurMap();
-
-		IhmHelper helper = new IhmHelper(stockagePizza, stockageClient,stockageLivreur, scanner);
+		Stockage<Client, Integer> stockageClient = new StockageClientMap();
+		
+		IhmHelper helper = new IhmHelper(stockagePizza, stockageClient ,stockageLivreur, scanner);
 
 		// Afficher le Menu
 		Menu listMenu = new Menu(helper);

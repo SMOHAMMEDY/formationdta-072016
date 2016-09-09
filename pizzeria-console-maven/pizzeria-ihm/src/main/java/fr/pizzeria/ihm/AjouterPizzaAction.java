@@ -22,9 +22,11 @@ public class AjouterPizzaAction extends Action {
 		double prix = helper.getScanner().nextDouble();
 		System.out.println("Veuillez saisir la categorie de la pizza");
 		String cat = helper.getScanner().next();
+		System.out.println("Veuillez saisir l'Url de l'image de la pizza");
+		String url = helper.getScanner().next();
 		
 		// creation de la nouvelle pizza
-		Pizza nouvellePizza = new Pizza(code, nom, prix,CategoriePizza.valueOf(cat));
+		Pizza nouvellePizza = new Pizza(code, nom, prix,CategoriePizza.valueOf(cat),url);
 		helper.getStockagePizza().save(nouvellePizza);
 
 		System.out.println("Pizza ajouter avec succes" + "\n");
