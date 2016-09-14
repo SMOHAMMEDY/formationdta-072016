@@ -11,8 +11,8 @@ public class ClientTest {
 	@Test
 	public void testCrediterCompte() throws CreditException {
 		
-		// cr�er une instance de client pour faire le test 
-		Client client = new Client(99999, "nomTest", "pr�nomTest", 0, "blabla@gmail.com", "12345");
+		// creer une instance de client pour faire le test 
+		Client client = new Client(99999, "nomTest", "prénomTest", 0, "blabla@gmail.com", "12345");
 		
 		client.crediterCompte(10);
 		
@@ -23,8 +23,11 @@ public class ClientTest {
 	
 	@Test(expected = CreditException.class)
 	
-	public void testcreditCompte() {
-	
+	public void testcreditCompte() throws CreditException {
+		// creer une instance de client pour faire le test 
+				Client client = new Client(99999, "nomTest", "prénomTest", 4000, "blabla@gmail.com", "12345");
+				
+				client.crediterCompte(2000);
 	}
 
 }

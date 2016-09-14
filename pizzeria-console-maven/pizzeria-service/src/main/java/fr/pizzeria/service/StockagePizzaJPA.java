@@ -30,7 +30,7 @@ public Collection<Pizza> findAll() {
 	EntityManager em = emf.createEntityManager();
 	TypedQuery<Pizza> query = em.createQuery("select p from Pizza p", Pizza.class);
 	Collection<Pizza> pizzas = query.getResultList();
-	em.close();// fermer l'entitymanager après la requete
+	em.close();// fermer l'entitymanager apres la requete
 	
 	return pizzas;
 }
@@ -61,12 +61,12 @@ public void update(Pizza editElement, String code) {
 	EntityManager em = emf.createEntityManager();
 	// selectionne la pizza dans la bdd : 
 	TypedQuery<Pizza> query = em.createQuery("select p from Pizza p where reference=:ancienCode", Pizza.class).setParameter("code",code );
-	// récupérer la pizza
+	// rï¿½cupï¿½rer la pizza
 	Pizza p = query.getSingleResult();
 	// ouvrir une transaction
 	EntityTransaction et = em.getTransaction();
 	et.begin();
-	// modifier pizza selectionée
+	// modifier pizza selectionï¿½e
 	em.merge(p.getCode());
 	em.merge(p)p.getNom(),p.getPrix(),p.getCat());
 	// enregister sur le bdd
@@ -105,12 +105,12 @@ public void delete(String ancienCode) {
 	EntityManager em = emf.createEntityManager();
 	// selectionne la pizza dans la bdd : 
 	TypedQuery<Pizza> query = em.createQuery("select p from Pizza p where reference=:ancienCode", Pizza.class).setParameter("ancienCode",ancienCode );
-	// récupérer la pizza
+	// rï¿½cupï¿½rer la pizza
 	Pizza p = query.getSingleResult();
 	// ouvrir une transaction
 	EntityTransaction et = em.getTransaction();
 	et.begin();
-	// supprimer pizza selectionée
+	// supprimer pizza selectionï¿½e
 	em.remove(p);
 	// enregister sur le bdd
 	et.commit();
