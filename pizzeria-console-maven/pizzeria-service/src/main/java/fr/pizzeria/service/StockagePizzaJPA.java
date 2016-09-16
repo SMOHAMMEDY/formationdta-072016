@@ -15,7 +15,7 @@ public class StockagePizzaJPA  implements Stockage<Pizza, String>{
 private EntityManagerFactory emf;
 
 
-public StockagePizzaJPA() throws SQLException{
+public StockagePizzaJPA(){
 
         this.emf = Persistence.createEntityManagerFactory("pizzeria-unit");
 }
@@ -37,8 +37,15 @@ public Collection<Pizza> findAll() {
 
 @Override
 public Pizza find(String code) {
-	// TODO Auto-generated method stub
-	return null;
+	
+	EntityManager em = emf.createEntityManager();
+    TypedQuery<Pizza> query = em.createNamedQuery("pizza.findByCode", Pizza.class).setParameter("codeP", code);
+    //TypedQuery<Pizza> query = em.createQuery("SELECT p FROM Pizza p WHERE p.code =:codeP", Pizza.class).setParameter("codeP", code);
+    
+    Pizza p = query.getSingleResult();
+    em.close();
+    
+    return p;
 }
 
 @Override
@@ -93,6 +100,7 @@ public void update(Pizza editPizza, String ancienCode) {
     p.setNom(editPizza.getNom());
     p.setPrix(editPizza.getPrix());
     p.setCat(editPizza.getCat());
+    p.setUrl(editPizza.getUrl());
     
     em.merge(p);
     
@@ -105,7 +113,7 @@ public void delete(String ancienCode) {
 	EntityManager em = emf.createEntityManager();
 	// selectionne la pizza dans la bdd : 
 	TypedQuery<Pizza> query = em.createQuery("select p from Pizza p where reference=:ancienCode", Pizza.class).setParameter("ancienCode",ancienCode );
-	// r�cup�rer la pizza
+	// récupérer la pizza
 	Pizza p = query.getSingleResult();
 	// ouvrir une transaction
 	EntityTransaction et = em.getTransaction();

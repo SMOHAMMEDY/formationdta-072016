@@ -7,16 +7,19 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 import org.apache.commons.lang3.StringUtils;
 
 @Entity
+
+@NamedQuery(name="pizza.findByCode", query="SELECT p FROM Pizza p WHERE p.code =:codeP")
 public class Pizza {
 
 	private static int NbPizza;
 
 	@Id @ GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id; // (strategy = GenerationType.EDENTITY) pour dire qu'il prend les valeurs généré dans ma table dans la base des donnée
+	private Integer id; // (strategy = GenerationType.EDENTITY) pour dire qu'il prend les valeurs gï¿½nï¿½rï¿½ dans ma table dans la base des donnï¿½e
 	@Column(name= "reference", length = 5, nullable = false, unique = true )
 	private String code;
 	@Column(name= "libelle", length = 30)

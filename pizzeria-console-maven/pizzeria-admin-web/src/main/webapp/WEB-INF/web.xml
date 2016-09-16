@@ -3,7 +3,17 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
   <display-name>Archetype Created Web Application</display-name>
+   <filter>
+  	<filter-name>LoginFilter</filter-name>
+  	<filter-class>fr.pizzeria.admin.web.LoginFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   
   <servlet>
   	<servlet-name>MaServlette</servlet-name>
@@ -15,6 +25,30 @@
   	<servlet-class>fr.pizzeria.admin.web.PizzaServletWebApi</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>ListerPizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.ListerPizzaController</servlet-class>
+  </servlet>
+  
+   <servlet>
+  	<servlet-name>CreePizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.CreePizzaController</servlet-class>
+  </servlet>
+
+  <servlet>
+  	<servlet-name>EditerPizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.EditerPizzaController</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>SupprimerPizzaController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.SupprimerPizzaController</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>LoginController</servlet-name>
+  	<servlet-class>fr.pizzeria.admin.web.LoginController</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>MaServlette</servlet-name>
@@ -26,5 +60,30 @@
   	<url-pattern>/api/servlet/pizzas</url-pattern>
   </servlet-mapping>
   
+  <servlet-mapping>
+  	<servlet-name>ListerPizzaController</servlet-name>
+  	<url-pattern>/pizzas/list</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>CreePizzaController</servlet-name>
+  	<url-pattern>/pizzas/ajout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>EditerPizzaController</servlet-name>
+  	<url-pattern>/pizzas/edit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>SupprimerPizzaController</servlet-name>
+  	<url-pattern>/pizzas/supprim</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>LoginController</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
   
 </web-app>
