@@ -1,3 +1,6 @@
+// meme chose que persistanceutil.java
+
+/*
 package dta;
 
 import fr.pizzeria.admin.web.PersistanceUtils;
@@ -11,3 +14,4 @@ public class MaClasseTest {
 	    }
 
 	}
+*/

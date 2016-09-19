@@ -43,14 +43,20 @@
 	 	<td> ${pizza.nom}</td>
 	 	<td> ${pizza.prix}</td>
 	 	<td> ${pizza.cat}</td>
-	 	<td> ${pizza.url}</td>
-	 	<td> <div class="form-group">
- 				 <a class="btn btn-primary" href="<c:url value ='/pizzas/edit?code=${pizza.code}'/>">Editer</a>
- 			</div>
+	 	<td> 
+	 		<img alt="${pizza.url}" src="../Images/Pizzas/${pizza.url}" height="100px"/>
+	 	</td>
+	 	<td> 
+ 			<form action="<c:url value='/pizzas/edit?code=${pizza.code}'/>">
+               <input type="hidden" name="code" value="${pizza.code}"></input>
+               <input type="submit" value="Editer" class="btn btn-primary"></input>
+          	</form>
 		</td>
-		<td><div class="form-group">
-    			<a class="btn btn-danger" href="<c:url value='/pizzas/supprim?code=${pizza.code}'/>">Supprimer</a>
-  			</div>
+		<td>
+			<form action="<c:url value='/pizzas/supprim?code=${pizza.code}' />" method="post">
+               <input type="hidden" name="code" value="${pizza.code}"></input>
+               <input type="submit" value="Supprimer" class="btn btn-danger"></input>
+          	</form>
 	 	</td>
 	 </tr> 
   </c:forEach>

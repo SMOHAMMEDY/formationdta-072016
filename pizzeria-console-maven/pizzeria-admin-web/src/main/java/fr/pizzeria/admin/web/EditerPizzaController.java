@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,20 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
+import fr.pizzeria.service.StockageType;
 
+@WebServlet("pizzas/edit") // remplace la supprission du web.xml
 public class EditerPizzaController extends HttpServlet {
+	@Inject /*@StockageType*/ private Stockage<Pizza, String> stockagePizza;
+	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ResourceBundle bundle = ResourceBundle.getBundle("application");
-		String classeStockagePizza = bundle.getString("pizza.service.Impl");
-		System.out.println(classeStockagePizza);
-		// crer une classe indiquer dans le fichier application.properties dans srs main ressources
-		Class<?> classePizza;
-		
-		try {
-			classePizza = Class.forName(classeStockagePizza);
-			Stockage<Pizza, String> stockagePizza = (Stockage<Pizza, String>) classePizza.newInstance();
+		//	Stockage<Pizza, String> stockagePizza = PersistanceUtils.getInstance().getStockagePizza(); // est remplacer par @Inject @StockageType private Stockage<Pizza, String> stockagePizza; en haut
 			
 			Pizza pizza = stockagePizza.find(req.getParameter("code"));
 			
@@ -36,27 +34,14 @@ public class EditerPizzaController extends HttpServlet {
 			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/pizzas/editPizzasJSTL.jsp");
 			dispatcher.forward(req, resp);
 			
-			
-
-			
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		ResourceBundle bundle = ResourceBundle.getBundle("application");
-		String classeStockagePizza = bundle.getString("pizza.service.Impl");
-		System.out.println(classeStockagePizza);
-		// creer une classe indiquer dans le fichier application.properties dans srs main ressources
-		Class<?> classePizza;
+		// Stockage<Pizza, String> stockagePizza = PersistanceUtils.getInstance().getStockagePizza(); // est remplacer par @Inject @StockageType private Stockage<Pizza, String> stockagePizza; en haut
 		
-		try {
-			classePizza = Class.forName(classeStockagePizza);
-			Stockage<Pizza, String> stockagePizza = (Stockage<Pizza, String>) classePizza.newInstance();
 			
 			String code = req.getParameter("codeP");
 			String nom = req.getParameter("nomP");
@@ -69,15 +54,6 @@ public class EditerPizzaController extends HttpServlet {
 			
 			resp.sendRedirect(req.getContextPath() + "/pizzas/list");
 	
-			
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
-
-
-
-	
 	
 }

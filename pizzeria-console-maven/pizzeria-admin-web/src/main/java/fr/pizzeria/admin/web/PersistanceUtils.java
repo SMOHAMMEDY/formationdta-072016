@@ -1,4 +1,6 @@
-  
+// après les injection ce fichier ne sert plus  
+
+/*
 package fr.pizzeria.admin.web;
 
 import fr.pizzeria.model.Pizza;
@@ -16,7 +18,7 @@ public class PersistanceUtils {
     private PersistanceUtils() {
     }
     
-    // etape 2 - accéder à l'instance unique depuis l'extérieur de la classe
+    // etape 2 - acc�der à l'instance unique depuis l'extérieur de la classe
     public static PersistanceUtils getInstance() {
         return instanceUnique;
     }
@@ -25,3 +27,4 @@ public class PersistanceUtils {
         return stockagePizza;
     }
 }
+*/

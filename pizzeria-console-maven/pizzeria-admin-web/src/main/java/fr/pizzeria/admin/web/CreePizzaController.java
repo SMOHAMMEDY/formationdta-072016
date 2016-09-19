@@ -1,10 +1,13 @@
 package fr.pizzeria.admin.web;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,8 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
+import fr.pizzeria.service.StockageType;
 
+@WebServlet("pizzas/ajout") // remplace la supprission du web.xml
 public class CreePizzaController extends HttpServlet {
+	
+	@Inject /*@StockageType*/ private Stockage<Pizza, String> stockagePizza;
 
 	
 	// le get pour appeler le formulaire
@@ -30,15 +37,7 @@ public class CreePizzaController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		ResourceBundle bundle = ResourceBundle.getBundle("application");
-		String classeStockagePizza = bundle.getString("pizza.service.Impl");
-		System.out.println(classeStockagePizza);
-		// creer une classe indiquer dans le fichier application.properties dans srs main ressources
-		Class<?> classePizza;
-		
-		try {
-			classePizza = Class.forName(classeStockagePizza);
-			Stockage<Pizza, String> stockagePizza = (Stockage<Pizza, String>) classePizza.newInstance();
+		//Stockage<Pizza, String> stockagePizza = PersistanceUtils.getInstance().getStockagePizza(); // est remplacer par @Inject @StockageType private Stockage<Pizza, String> stockagePizza; en haut
 			
 			String code = req.getParameter("codeP");
 			String nom = req.getParameter("nomP");
@@ -51,11 +50,6 @@ public class CreePizzaController extends HttpServlet {
 			
 			resp.sendRedirect(req.getContextPath() + "/pizzas/list");
 	
-			
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	

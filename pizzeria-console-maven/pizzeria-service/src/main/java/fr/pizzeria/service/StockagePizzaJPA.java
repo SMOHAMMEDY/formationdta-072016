@@ -2,6 +2,8 @@ package fr.pizzeria.service;
 
 import java.sql.SQLException;
 import java.util.Collection;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -10,6 +12,8 @@ import javax.persistence.TypedQuery;
 
 import fr.pizzeria.model.Pizza;
 
+//@StockageType 
+//@ApplicationScoped // pour que le bean dure pendans de toute l'application et pas regénéré a chaque servlet
 public class StockagePizzaJPA  implements Stockage<Pizza, String>{
 	
 private EntityManagerFactory emf;
