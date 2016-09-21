@@ -2,11 +2,13 @@ package fr.pizzeria.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 import fr.pizzeria.exception.CreditException;
 import fr.pizzeria.exception.DebitException;
 
 @Entity
+@NamedQuery(name="Client.findByCode", query="SELECT c FROM Client c WHERE c.code =:codeC")
 public class Client extends AbstractPersonne implements CompteStat{
 
 	@Column(name= "mot_de_passe")
@@ -15,14 +17,32 @@ public class Client extends AbstractPersonne implements CompteStat{
 	private String mail;
 	
 	
-public Client(Integer nouveauCode, String nouveauNom, String nouveauPrenom, double nouveauSolde, String nouveauEmail, String nouveauMdp){
+    public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public Client(Integer nouveauCode, String nouveauNom, String nouveauPrenom, double nouveauSolde, String nouveauEmail, String nouveauMdp){
 	super(nouveauCode, nouveauNom, nouveauPrenom, nouveauSolde);
 	this.mail = nouveauEmail;
 	this.mdp = nouveauMdp;
 	
 	}
+
+	public Client(String nom, String prenom, double solde, String mdp, String mail) {
+		super( nom, prenom, solde);
+		this.mdp = mdp;
+		this.mail = mail;
+	}
 	
-	
+
+	public Client() {
+		super();
+	}
+
 	@Override
 	public void  crediterCompte(double montant) throws CreditException{
 		
@@ -59,6 +79,14 @@ public Client(Integer nouveauCode, String nouveauNom, String nouveauPrenom, doub
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	public String getMdp() {
+		return mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
 	public String getPrenom() {
 		return prenom;
 	}

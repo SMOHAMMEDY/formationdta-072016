@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.pizzeria.ejb.PizzaServiceEJB;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import fr.pizzeria.service.Stockage;
@@ -19,8 +21,9 @@ import fr.pizzeria.service.StockageType;
 
 @WebServlet("pizzas/edit") // remplace la supprission du web.xml
 public class EditerPizzaController extends HttpServlet {
-	@Inject /*@StockageType*/ private Stockage<Pizza, String> stockagePizza;
 	
+	//@Inject /*@StockageType*/ private Stockage<Pizza, String> stockagePizza;// plus besoin on va utilisé stockageEJB
+	@EJB private PizzaServiceEJB stockagePizza;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

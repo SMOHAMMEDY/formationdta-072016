@@ -24,8 +24,6 @@ import fr.pizzeria.service.StockagePizzaJPA;
 @WebServlet("/api/servlet/pizzas") // remplace la supprission du web.xml
 public class PizzaServletWebApi extends HttpServlet{
 
-	
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	

@@ -2,10 +2,12 @@ package fr.pizzeria.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 import fr.pizzeria.exception.DebitException;
 
 @Entity
+@NamedQuery(name="Livreur.findByCode", query="SELECT l FROM Livreur l WHERE l.code =:codeL")
 public class Livreur extends AbstractPersonne implements CompteStat{
 
 	@Column(name= "DecouverAutorise", length = 5)
@@ -27,8 +29,16 @@ public class Livreur extends AbstractPersonne implements CompteStat{
 		
 	}
 
-// public void crÈditer est utiliser directement de AbstractPersonne car pas le limite pour le livreur
+
+public Livreur() {
+		super();
+	}
+
+
+// public void cr√©diter est utiliser directement de AbstractPersonne car pas le limite pour le livreur
 	
+
+
 	@Override
 	public void debiterCompte(double montant) throws DebitException{
 		
@@ -41,10 +51,16 @@ public class Livreur extends AbstractPersonne implements CompteStat{
 		
 	}
 	
+	public Livreur(String nom, String prenom, double solde, double montantDecouvertAutorise) {
+		super( nom, prenom, solde);
+		this.montantDecouvertAutorise = montantDecouvertAutorise;
+	}
+
+
 	@Override
 	public String toString(){
 		
-		return this.getCode() + "-> " + this.getNom() + " " + this.getPrenom() +" (" + this.getSolde() + ")" + " (montant dÈcouvert autorisÈ = " + this.getMontantDecouvertAutorise() + " )" ;
+		return this.getCode() + "-> " + this.getNom() + " " + this.getPrenom() +" (" + this.getSolde() + ")" + " (montant d√©couvert autoris√© = " + this.getMontantDecouvertAutorise() + " )" ;
 		
 	}
 	

@@ -37,7 +37,29 @@ private Date date;
 private Set<Pizza> pizza;
 
 
+public Commande(Integer id, Client client, Livreur livreur, Integer n_commande, Date date, Set<Pizza> pizza) {
+	super();
+	this.id = id;
+	this.client = client;
+	this.livreur = livreur;
+	N_commande = n_commande;
+	this.date = date;
+	this.pizza = pizza;
 
+}
+public Commande(Client client, Livreur livreur, Integer n_commande, Date date, Set<Pizza> pizza) {
+	super();
+	this.client = client;
+	this.livreur = livreur;
+	N_commande = n_commande;
+	this.date = date;
+	this.pizza = pizza;
+
+}
+
+public Commande() {
+	super();
+}
 
 
 

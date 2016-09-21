@@ -13,7 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 
 @Entity
 
-@NamedQuery(name="pizza.findByCode", query="SELECT p FROM Pizza p WHERE p.code =:codeP")
+@NamedQuery(name="Pizza.findByCode", query="SELECT p FROM Pizza p WHERE p.code =:codeP")
 public class Pizza {
 
 	private static int NbPizza;

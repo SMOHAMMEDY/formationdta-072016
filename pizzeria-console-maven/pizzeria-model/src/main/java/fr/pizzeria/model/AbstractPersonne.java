@@ -15,7 +15,7 @@ import fr.pizzeria.exception.DebitException;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractPersonne {
 	
-	@Id @ GeneratedValue(strategy=GenerationType.IDENTITY) @Column(name= "id")
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) @Column(name= "id")
 	protected Integer code;
 	@Column(name= "nom", length = 30)
 	protected  String nom;
@@ -32,6 +32,19 @@ public abstract class AbstractPersonne {
 		this.solde = solde;
 	}
 	
+
+	public AbstractPersonne(String nom, String prenom, double solde) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.solde = solde;
+	}
+	
+
+	public AbstractPersonne() {
+		super();
+	}
+
 
 	public void  crediterCompte(double montant) throws CreditException{
 		
