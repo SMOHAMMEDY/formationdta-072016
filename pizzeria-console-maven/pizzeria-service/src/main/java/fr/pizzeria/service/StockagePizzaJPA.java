@@ -10,10 +10,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Component;
+
 import fr.pizzeria.model.Pizza;
 
 //@StockageType 
 //@ApplicationScoped // pour que le bean dure pendans de toute l'application et pas regénéré a chaque servlet
+
+@Component
 public class StockagePizzaJPA  implements Stockage<Pizza, String>{
 	
 private EntityManagerFactory emf;

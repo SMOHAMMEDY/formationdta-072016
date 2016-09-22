@@ -14,8 +14,6 @@ public class PizzaServiceEJB {
 
 	@PersistenceContext private EntityManager em ; // la suite comme stockage pizzaJPA sans les entity manager
 
-
-
 	public Collection<Pizza> findAll() {
 
 		TypedQuery<Pizza> query = em.createQuery("select p from Pizza p", Pizza.class);
