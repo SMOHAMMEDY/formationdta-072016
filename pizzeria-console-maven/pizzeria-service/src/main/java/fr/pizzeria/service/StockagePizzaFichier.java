@@ -61,7 +61,7 @@ public class StockagePizzaFichier implements Stockage<Pizza, String>{
 	@Override
 	public void save(Pizza newElement) {
 
-		// Création d'un nouveau fichier
+		// Crï¿½ation d'un nouveau fichier
 		// Files.createFile(cheminFichier);
 		pizzas.put(newElement.getCode(),newElement);
 		try {
@@ -86,4 +86,6 @@ public class StockagePizzaFichier implements Stockage<Pizza, String>{
 	public void delete(String ancienCode) {
 		// TODO Auto-generated method stub
 	}
+
+
 }

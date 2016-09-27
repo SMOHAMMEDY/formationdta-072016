@@ -39,10 +39,10 @@
 		   <artifactId>javaee-api</artifactId>
 		</dependency>
 		
-		<dependency>
+	<!--<dependency> 
 			<groupId>org.springframework</groupId>    
 	      	<artifactId>spring-context</artifactId>      
-		</dependency>
+		</dependency>  --> <!--  après gestion des beans en java-->
 		
  	 </dependencies>
  	 

@@ -8,10 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
-
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -28,7 +25,7 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 		String user = bundle.getString("user");
 		String mdp = bundle.getString("MDP");
 
-		// création connection
+		// crÃ©ation connection
 		Connection connection = DriverManager.getConnection(url,user,mdp);
 		return connection;
 	}
@@ -43,11 +40,11 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 	        String url = bundle.getString("url");
 	        String user = bundle.getString("user");
 	        String mdp = bundle.getString("MDP");
-	    // Créer une connection  structure : Connection connection = DriverManager.getConnection(url,user,password);
+	    // Crï¿½er une connection  structure : Connection connection = DriverManager.getConnection(url,user,password);
 		//  ouverture des ressources connection statement  et resutat 
 			Connection connection = DriverManager.getConnection(url,user,mdp);
 		 */		
-		// Créer une connection  structure : Connection connection = DriverManager.getConnection(url,user,password);
+		// Crï¿½er une connection  structure : Connection connection = DriverManager.getConnection(url,user,password);
 		try{
 			//  ouverture des ressources connection statement  et resutat 
 			Connection connection = creerConnection();
@@ -61,7 +58,7 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 				String nom = resultat.getString("libelle");
 				double prix = resultat.getDouble("prix");
 				String url = resultat.getString("Url_Image");
-				// récupéré le string de categories puis le convertir en type categorie pizza
+				// rï¿½cupï¿½rï¿½ le string de categories puis le convertir en type categorie pizza
 				String cat = resultat.getString("categories");
 				CategoriePizza catPizza = CategoriePizza.valueOf(cat);
 
@@ -106,7 +103,7 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 			updatePizzaSt.setString(1,newElement.getCode()); 
 			updatePizzaSt.setString(2,newElement.getNom());
 			updatePizzaSt.setDouble(3,newElement.getPrix());
-			updatePizzaSt.setString(4,newElement.getCat().name());// .name pour transformer un objet de type ennumération en chain de caractère portant le nom 
+			updatePizzaSt.setString(4,newElement.getCat().name());// .name pour transformer un objet de type ennumï¿½ration en chain de caractï¿½re portant le nom 
 			updatePizzaSt.executeUpdate(); 
 
 			connection.close();
@@ -129,7 +126,7 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 			updatePizzaSt.setString(1,editElement.getCode()); 
 			updatePizzaSt.setString(2,editElement.getNom());
 			updatePizzaSt.setDouble(3,editElement.getPrix());
-			updatePizzaSt.setString(4,editElement.getCat().name());// .name pour transformer un objet de type ennumération en chain de caractère portant le nom 
+			updatePizzaSt.setString(4,editElement.getCat().name());// .name pour transformer un objet de type ennumï¿½ration en chain de caractï¿½re portant le nom 
 			updatePizzaSt.executeUpdate(); 
 			
 			connection.close();
@@ -144,8 +141,10 @@ public class StockagePizzaJDBC implements Stockage<Pizza, String>{
 	@Override
 	public void delete(String ancienCode) {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+
 
 
 }

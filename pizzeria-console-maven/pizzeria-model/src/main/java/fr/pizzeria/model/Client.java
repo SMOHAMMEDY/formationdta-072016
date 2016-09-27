@@ -32,7 +32,7 @@ public class Client extends AbstractPersonne implements CompteStat{
 	
 	}
 
-	public Client(String nom, String prenom, double solde, String mdp, String mail) {
+	public Client(String nom, String prenom, double solde, String mail, String mdp) {
 		super( nom, prenom, solde);
 		this.mdp = mdp;
 		this.mail = mail;
